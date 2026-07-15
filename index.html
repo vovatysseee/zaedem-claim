@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<title>Ваш объект на Заедем.by</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600;700;800;900&family=Golos+Text:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#0c0c0c;--ink2:#1e1e1e;--muted:#6b6b6b;--hint:#aaa;--sand:#faf8f4;--sand2:#f2efe8;--sand3:#e5e0d5;--green:#1a5c38;--green2:#246b44;--lime:#c9f135;--lime2:#d9f554;--green4:#0d3320;--white:#fff;--sh:0 2px 16px rgba(0,0,0,.06);--sh2:0 12px 40px rgba(0,0,0,.12)}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Golos Text',sans-serif;background:var(--sand);color:var(--ink);line-height:1.55;-webkit-font-smoothing:antialiased}
+.logo{font-family:'Unbounded',sans-serif;font-weight:900;font-size:1.35rem;color:var(--lime);letter-spacing:-1px}
+.logo em{font-style:normal;color:#fff}
+/* HERO как на сайте */
+.hero{position:relative;overflow:hidden;background:linear-gradient(135deg,#0F2D1D,#081C12,#16402A,#081C12,#0F2D1D);background-size:400% 400%;animation:hg 28s ease infinite;padding:26px 18px 30px;text-align:center}
+@keyframes hg{0%{background-position:0 50%}50%{background-position:100% 50%}100%{background-position:0 50%}}
+.hero-badge{display:inline-flex;align-items:center;gap:7px;background:rgba(201,241,53,.16);border:1px solid rgba(201,241,53,.35);color:var(--lime);font-size:12px;font-weight:700;padding:7px 15px;border-radius:50px;margin:18px 0 12px}
+.hero h1{font-family:'Unbounded',sans-serif;font-weight:800;font-size:clamp(19px,5vw,26px);color:#fff;line-height:1.2;letter-spacing:-.5px}
+.hero p{color:rgba(255,255,255,.8);font-size:13.5px;margin-top:8px}
+.wrap{max-width:580px;margin:0 auto;padding:0 16px}
+.card{background:var(--white);border-radius:18px;box-shadow:var(--sh);padding:20px;margin:-18px 0 16px;position:relative}
+.obj-title{font-family:'Unbounded',sans-serif;font-weight:700;font-size:20px;line-height:1.25;margin-bottom:6px}
+.obj-addr{color:var(--muted);font-size:13px;margin-bottom:16px;display:flex;align-items:center;gap:5px}
+.photos{display:grid;grid-template-columns:2fr 1fr;grid-template-rows:1fr 1fr;gap:6px;height:220px;border-radius:14px;overflow:hidden;margin-bottom:16px}
+.photos img{width:100%;height:100%;object-fit:cover;background:var(--sand2)}
+.photos img:first-child{grid-row:1/3}
+.photos.one{grid-template-columns:1fr;grid-template-rows:1fr}
+.photos.one img:first-child{grid-row:auto}
+.ph-empty{grid-column:1/-1;grid-row:1/3;display:flex;flex-direction:column;gap:6px;align-items:center;justify-content:center;background:var(--sand2);color:var(--muted);font-size:13px;border-radius:14px}
+.obj-desc{font-size:14px;color:var(--ink2);line-height:1.65}
+.sec-h{font-family:'Unbounded',sans-serif;font-size:15px;font-weight:700;margin-bottom:3px}
+.sec-p{font-size:12.5px;color:var(--muted);margin-bottom:16px}
+.fg{margin-bottom:13px}
+.fg label{display:block;font-size:12px;font-weight:600;color:var(--green);margin-bottom:5px}
+.fg input,.fg textarea{width:100%;border:1.5px solid var(--sand3);border-radius:11px;padding:12px 14px;font-size:14px;font-family:inherit;outline:none;background:var(--sand);transition:.15s}
+.fg input:focus,.fg textarea:focus{border-color:var(--green);background:#fff}
+.fg textarea{resize:vertical;min-height:92px}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.acct{border-top:1px dashed var(--sand3);margin-top:6px;padding-top:16px}
+.agree{display:flex;gap:11px;align-items:flex-start;background:var(--sand);border-radius:12px;padding:14px;margin:16px 0;cursor:pointer;border:1.5px solid var(--sand3);transition:.15s}
+.agree:has(input:checked){border-color:var(--green);background:rgba(26,92,56,.04)}
+.agree input{margin-top:1px;width:19px;height:19px;flex-shrink:0;accent-color:var(--green);cursor:pointer}
+.agree span{font-size:12.5px;color:var(--ink2);line-height:1.55}
+.agree a{color:var(--green);font-weight:600}
+.btn{width:100%;background:var(--green);color:#fff;border:none;border-radius:13px;padding:16px;font-size:15px;font-weight:700;font-family:'Unbounded',sans-serif;letter-spacing:-.2px;cursor:pointer;transition:.15s;box-shadow:0 6px 18px rgba(26,92,56,.25)}
+.btn:hover{background:var(--green2);transform:translateY(-1px)}
+.btn:disabled{opacity:.55;cursor:not-allowed;transform:none}
+.btn-ghost{width:100%;background:none;color:var(--muted);border:none;padding:14px;font-size:13.5px;font-family:inherit;cursor:pointer;margin-top:4px;text-decoration:underline;text-underline-offset:3px}
+.spin{width:38px;height:38px;border:3px solid var(--sand3);border-top-color:var(--green);border-radius:50%;margin:80px auto;animation:sp .7s linear infinite}
+@keyframes sp{to{transform:rotate(360deg)}}
+.msg{text-align:center;padding:48px 24px}
+.msg .ico{font-size:56px;margin-bottom:18px}
+.msg h2{font-family:'Unbounded',sans-serif;font-size:22px;margin-bottom:10px}
+.msg p{color:var(--muted);font-size:14px;max-width:400px;margin:0 auto}
+.msg a{color:var(--green);font-weight:700;text-decoration:none}
+.trust{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:14px}
+.trust-i{display:flex;align-items:center;gap:6px;font-size:11.5px;color:rgba(255,255,255,.75)}
+.foot{text-align:center;color:var(--hint);font-size:11px;padding:24px 0 40px}
+</style>
+</head>
+<body>
+<div class="hero">
+  <div class="logo">Заедем<em>.by</em></div>
+  <div class="hero-badge">✨ Персональное приглашение</div>
+  <h1>Ваш объект уже готов<br>к размещению у нас</h1>
+  <p>Проверьте, поправьте если нужно — и он появится на Заедем.by</p>
+  <div class="trust">
+    <div class="trust-i">🔒 0% предоплат</div>
+    <div class="trust-i">📄 Договоры автоматом</div>
+    <div class="trust-i">🤝 Комиссия только с броней</div>
+  </div>
+</div>
+<div class="wrap">
+  <div id="app"><div class="spin"></div></div>
+</div>
+<div class="foot">Заедем.by · Платформа бронирования жилья</div>
+<script>
+const API='https://api.zaedem.by';
+const token=(location.pathname.split('/claim/')[1]||'').replace(/\/$/,'')||new URLSearchParams(location.search).get('t')||location.hash.replace('#','')||'';
+
+function esc(s){return String(s==null?'':s).replace(/[<>&"]/g,c=>({'<':'&lt;','>':'&gt;','&':'&amp;','"':'&quot;'}[c]));}
+
+async function load(){
+  if(!token){ return fail('Ссылка неполная','Похоже, ссылка скопирована не целиком. Откройте её ещё раз из сообщения.'); }
+  try{
+    const r=await fetch(API+'/api/hotels/claim/'+encodeURIComponent(token));
+    const d=await r.json();
+    if(!d.ok){ return fail('Ссылка недействительна', d.error||'Возможно, объект уже подтверждён или срок ссылки истёк.'); }
+    render(d.draft);
+  }catch(e){ fail('Не удалось загрузить','Проверьте интернет и попробуйте открыть ссылку ещё раз.'); }
+}
+
+function render(o){
+  let photos;
+  if(o.photos&&o.photos.length){
+    const cls=o.photos.length===1?'photos one':'photos';
+    photos='<div class="'+cls+'">'+o.photos.slice(0,3).map(u=>'<img src="'+esc(u)+'" onerror="this.style.display=\'none\'">').join('')+'</div>';
+  } else {
+    photos='<div class="photos"><div class="ph-empty"><div style="font-size:26px">📷</div><div>Фото добавите в кабинете<br>после подтверждения</div></div></div>';
+  }
+  document.getElementById('app').innerHTML=`
+    <div class="card">
+      <div class="obj-title">${esc(o.name_ru)}</div>
+      ${o.address?`<div class="obj-addr">📍 ${esc(o.address)}</div>`:''}
+      ${photos}
+      ${o.description_ru?`<div class="obj-desc">${esc(o.description_ru)}</div>`:''}
+    </div>
+    <div class="card">
+      <div class="sec-h">Проверьте данные</div>
+      <div class="sec-p">Поправьте, если что-то неверно. На сайте появится только после вашего согласия и проверки модератором.</div>
+      <div class="fg"><label>Название объекта</label><input id="c-name" value="${esc(o.name_ru)}"></div>
+      <div class="fg"><label>Адрес</label><input id="c-addr" value="${esc(o.address)}" placeholder="Город, улица, дом"></div>
+      <div class="fg"><label>Описание</label><textarea id="c-desc" placeholder="Кратко об объекте: что за жильё, для кого, чем хорошо">${esc(o.description_ru)}</textarea></div>
+      <div class="row">
+        <div class="fg"><label>Телефон</label><input id="c-phone" value="${esc(o.phone)}" placeholder="+375 __ ___-__-__"></div>
+        <div class="fg"><label>Email</label><input id="c-email" value="${esc(o.email)}" placeholder="you@mail.by"></div>
+      </div>
+      <div class="acct">
+        <div class="sec-h" style="font-size:14px">Доступ в личный кабинет</div>
+        <div class="sec-p">Придумайте пароль — сразу получите кабинет для управления бронями, ценами и объектом.</div>
+        <div class="row">
+          <div class="fg"><label>Email для входа</label><input id="c-oemail" value="${esc(o.email)}" placeholder="you@mail.by"></div>
+          <div class="fg"><label>Пароль</label><input id="c-opass" type="password" placeholder="минимум 6 символов"></div>
+        </div>
+      </div>
+      <label class="agree">
+        <input type="checkbox" id="c-agree">
+        <span>Я владелец этого объекта (или уполномочен размещать), указанные данные верны. Соглашаюсь с <a href="https://zaedem.by/oferta" target="_blank">офертой</a> и <a href="https://zaedem.by/privacy" target="_blank">политикой конфиденциальности</a> и разрешаю размещение объекта на Заедем.by.</span>
+      </label>
+      <button class="btn" id="c-submit" onclick="submitClaim()">Подтверждаю и размещаю</button>
+      <button class="btn-ghost" onclick="declineObj()">Это не мой объект / отказаться</button>
+    </div>`;
+}
+
+async function submitClaim(){
+  if(!document.getElementById('c-agree').checked){ alert('Пожалуйста, подтвердите согласие галочкой — без этого мы не можем разместить объект.'); return; }
+  const btn=document.getElementById('c-submit'); btn.disabled=true; btn.textContent='Отправляем…';
+  const body={
+    agree:true,
+    name_ru:document.getElementById('c-name').value.trim(),
+    address:document.getElementById('c-addr').value.trim(),
+    description_ru:document.getElementById('c-desc').value.trim(),
+    phone:document.getElementById('c-phone').value.trim(),
+    email:document.getElementById('c-email').value.trim(),
+    owner_email:document.getElementById('c-oemail').value.trim(),
+    owner_password:document.getElementById('c-opass').value
+  };
+  try{
+    const r=await fetch(API+'/api/hotels/claim/'+encodeURIComponent(token),{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});
+    const d=await r.json();
+    if(d.ok){ success(d.message); }
+    else { btn.disabled=false; btn.textContent='Подтверждаю и размещаю'; alert(d.error||'Не удалось отправить'); }
+  }catch(e){ btn.disabled=false; btn.textContent='Подтверждаю и размещаю'; alert('Сервис недоступен, попробуйте позже'); }
+}
+
+function declineObj(){
+  if(!confirm('Убрать это объявление? Оно нигде не появится и никто его не увидит.'))return;
+  document.getElementById('app').innerHTML='<div class="msg"><div class="ico">👋</div><h2>Хорошо!</h2><p>Объявление не будет размещено. Спасибо, что уделили время. Если передумаете — просто напишите нам.</p></div>';
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function success(msg){
+  document.getElementById('app').innerHTML='<div class="msg"><div class="ico">🎉</div><h2>Готово!</h2><p>'+esc(msg||'Объект принят и отправлен на проверку. После одобрения он появится на сайте.')+'</p><p style="margin-top:20px"><a href="https://hotel.zaedem.by">Войти в личный кабинет →</a></p></div>';
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function fail(t,p){
+  document.getElementById('app').innerHTML='<div class="msg"><div class="ico">🔗</div><h2>'+esc(t)+'</h2><p>'+esc(p)+'</p></div>';
+}
+
+load();
+</script>
+</body>
+</html>
