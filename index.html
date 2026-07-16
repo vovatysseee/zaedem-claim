@@ -112,6 +112,10 @@ function render(o){
       <div class="sec-p">Поправьте, если что-то неверно. На сайте появится только после вашего согласия и проверки модератором.</div>
       <div class="fg"><label>Название объекта</label><input id="c-name" value="${esc(o.name_ru)}"></div>
       <div class="fg"><label>Адрес</label><input id="c-addr" value="${esc(o.address)}" placeholder="Город, улица, дом"></div>
+      <div class="row">
+        <div class="fg"><label>Город *</label><select id="c-city" style="width:100%;border:1.5px solid var(--sand3);border-radius:11px;padding:12px 14px;font-size:14px;font-family:inherit;outline:none;background:var(--sand)"><option value="">— выберите —</option></select></div>
+        <div class="fg"><label>Координаты (для карты)</label><input id="c-latlng" placeholder="53.9006, 27.5590"></div>
+      </div>
       <div class="fg"><label>Описание</label><textarea id="c-desc" placeholder="Кратко об объекте: что за жильё, для кого, чем хорошо">${esc(o.description_ru)}</textarea></div>
       <div class="row">
         <div class="fg"><label>Телефон</label><input id="c-phone" value="${esc(o.phone)}" placeholder="+375 __ ___-__-__"></div>
@@ -140,15 +144,31 @@ function render(o){
       <button class="btn" id="c-submit" onclick="submitClaim()">Подтверждаю и размещаю</button>
       <button class="btn-ghost" onclick="declineObj()">Это не мой объект / отказаться</button>
     </div>`;
+  loadCitiesClaim(o.city_id);
+}
+
+async function loadCitiesClaim(selId){
+  try{
+    const r=await fetch(API+'/api/cities');
+    const rows=await r.json();
+    const sel=document.getElementById('c-city');
+    if(sel&&Array.isArray(rows)){
+      sel.innerHTML='<option value="">— выберите —</option>'+rows.map(c=>`<option value="${c.id}"${String(c.id)===String(selId||'')?' selected':''}>${esc(c.name_ru||c.name_en||'')}</option>`).join('');
+    }
+  }catch(e){}
 }
 
 async function submitClaim(){
   if(!document.getElementById('c-agree').checked){ alert('Пожалуйста, подтвердите согласие галочкой — без этого мы не можем разместить объект.'); return; }
   const btn=document.getElementById('c-submit'); btn.disabled=true; btn.textContent='Отправляем…';
+  let lat=null,lng=null; const ll=document.getElementById('c-latlng').value.trim();
+  if(ll){ const m=ll.split(',').map(s=>parseFloat(s.trim())); if(m.length===2&&!isNaN(m[0])&&!isNaN(m[1])){ lat=m[0]; lng=m[1]; } }
   const body={
     agree:true,
     name_ru:document.getElementById('c-name').value.trim(),
     address:document.getElementById('c-addr').value.trim(),
+    city_id:document.getElementById('c-city').value||null,
+    lat:lat, lng:lng,
     description_ru:document.getElementById('c-desc').value.trim(),
     phone:document.getElementById('c-phone').value.trim(),
     email:document.getElementById('c-email').value.trim(),
