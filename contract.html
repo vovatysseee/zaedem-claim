@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<title>Данные для договора — Заедем.by</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600;700;800;900&family=Golos+Text:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#0c0c0c;--ink2:#1e1e1e;--muted:#6b6b6b;--hint:#aaa;--sand:#faf8f4;--sand2:#f2efe8;--sand3:#e5e0d5;--green:#1a5c38;--green2:#246b44;--lime:#c9f135;--lime2:#d9f554;--green4:#0d3320;--white:#fff;--sh:0 2px 16px rgba(0,0,0,.06);--sh2:0 12px 40px rgba(0,0,0,.12)}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Golos Text',sans-serif;background:var(--sand);color:var(--ink);line-height:1.55;-webkit-font-smoothing:antialiased}
+.logo{font-family:'Unbounded',sans-serif;font-weight:900;font-size:1.35rem;color:var(--lime);letter-spacing:-1px}
+.logo em{font-style:normal;color:#fff}
+.hero{position:relative;overflow:hidden;background:linear-gradient(135deg,#0F2D1D,#081C12,#16402A,#081C12,#0F2D1D);background-size:400% 400%;animation:hg 28s ease infinite;padding:26px 18px 30px;text-align:center}
+@keyframes hg{0%{background-position:0 50%}50%{background-position:100% 50%}100%{background-position:0 50%}}
+.hero-badge{display:inline-flex;align-items:center;gap:7px;background:rgba(201,241,53,.16);border:1px solid rgba(201,241,53,.35);color:var(--lime);font-size:12px;font-weight:700;padding:7px 15px;border-radius:50px;margin:18px 0 12px}
+.hero h1{font-family:'Unbounded',sans-serif;font-weight:800;font-size:clamp(19px,5vw,26px);color:#fff;line-height:1.2;letter-spacing:-.5px}
+.hero p{color:rgba(255,255,255,.8);font-size:13.5px;margin-top:8px}
+.wrap{max-width:580px;margin:0 auto;padding:0 16px}
+.card{background:var(--white);border-radius:18px;box-shadow:var(--sh);padding:20px;margin:-18px 0 16px;position:relative}
+.card+.card{margin-top:0}
+.book{display:flex;gap:14px;align-items:center}
+.book-ico{width:46px;height:46px;border-radius:12px;background:rgba(26,92,56,.08);display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0}
+.book-t{font-family:'Unbounded',sans-serif;font-weight:700;font-size:16px;line-height:1.25}
+.book-m{color:var(--muted);font-size:12.5px;margin-top:3px}
+.why{background:rgba(26,92,56,.05);border:1px solid rgba(26,92,56,.12);border-radius:12px;padding:13px 15px;margin-top:14px;font-size:12.5px;color:var(--ink2);line-height:1.6}
+.why b{color:var(--green)}
+.sec-h{font-family:'Unbounded',sans-serif;font-size:15px;font-weight:700;margin-bottom:3px}
+.sec-p{font-size:12.5px;color:var(--muted);margin-bottom:16px}
+.gblock{border:1.5px solid var(--sand3);border-radius:14px;padding:16px;margin-bottom:14px;background:var(--sand)}
+.gblock-h{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+.gblock-h .n{font-family:'Unbounded',sans-serif;font-weight:700;font-size:14px;color:var(--green)}
+.rm{background:none;border:none;color:#c0392b;font-size:12px;font-weight:600;cursor:pointer;font-family:inherit;padding:4px}
+.fg{margin-bottom:11px}
+.fg:last-child{margin-bottom:0}
+.fg label{display:block;font-size:11.5px;font-weight:600;color:var(--green);margin-bottom:5px}
+.fg input,.fg select{width:100%;border:1.5px solid var(--sand3);border-radius:10px;padding:11px 13px;font-size:14px;font-family:inherit;outline:none;background:#fff;transition:.15s}
+.fg input:focus,.fg select:focus{border-color:var(--green)}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+.row3{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+.add-btn{width:100%;background:#fff;color:var(--green);border:1.5px dashed var(--green);border-radius:12px;padding:13px;font-size:13.5px;font-weight:700;font-family:inherit;cursor:pointer;transition:.15s;margin-bottom:4px}
+.add-btn:hover{background:rgba(26,92,56,.04)}
+.agree{display:flex;gap:11px;align-items:flex-start;background:var(--sand);border-radius:12px;padding:14px;margin:16px 0;cursor:pointer;border:1.5px solid var(--sand3);transition:.15s}
+.agree:has(input:checked){border-color:var(--green);background:rgba(26,92,56,.04)}
+.agree input{margin-top:1px;width:19px;height:19px;flex-shrink:0;accent-color:var(--green);cursor:pointer}
+.agree span{font-size:12.5px;color:var(--ink2);line-height:1.55}
+.agree a{color:var(--green);font-weight:600}
+.btn{width:100%;background:var(--green);color:#fff;border:none;border-radius:13px;padding:16px;font-size:15px;font-weight:700;font-family:'Unbounded',sans-serif;letter-spacing:-.2px;cursor:pointer;transition:.15s;box-shadow:0 6px 18px rgba(26,92,56,.25)}
+.btn:hover{background:var(--green2);transform:translateY(-1px)}
+.btn:disabled{opacity:.55;cursor:not-allowed;transform:none}
+.spin{width:38px;height:38px;border:3px solid var(--sand3);border-top-color:var(--green);border-radius:50%;margin:80px auto;animation:sp .7s linear infinite}
+@keyframes sp{to{transform:rotate(360deg)}}
+.msg{text-align:center;padding:48px 24px}
+.msg .ico{font-size:56px;margin-bottom:18px}
+.msg h2{font-family:'Unbounded',sans-serif;font-size:22px;margin-bottom:10px}
+.msg p{color:var(--muted);font-size:14px;max-width:400px;margin:0 auto}
+.msg a{color:var(--green);font-weight:700;text-decoration:none}
+.note{font-size:11.5px;color:var(--hint);text-align:center;margin-bottom:10px}
+.trust{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:14px}
+.trust-i{display:flex;align-items:center;gap:6px;font-size:11.5px;color:rgba(255,255,255,.75)}
+.foot{text-align:center;color:var(--hint);font-size:11px;padding:24px 0 40px}
+</style>
+</head>
+<body>
+<div class="hero">
+  <div class="logo">Заедем<em>.by</em></div>
+  <div class="hero-badge">📄 Данные для договора</div>
+  <h1>Заполните данные<br>гостей для заселения</h1>
+  <p>Это займёт пару минут — и хозяин подготовит договор заранее</p>
+  <div class="trust">
+    <div class="trust-i">🔒 Данные защищены</div>
+    <div class="trust-i">📄 Только для договора</div>
+    <div class="trust-i">🤝 Видит только хозяин</div>
+  </div>
+</div>
+<div class="wrap">
+  <div id="app"><div class="spin"></div></div>
+</div>
+<div class="foot">Заедем.by · Платформа бронирования жилья</div>
+<script>
+const API='https://api.zaedem.by';
+const token=(location.pathname.split('/contract/')[1]||'').replace(/\/$/,'')||new URLSearchParams(location.search).get('t')||location.hash.replace('#','')||'';
+
+function esc(s){return String(s==null?'':s).replace(/[<>&"]/g,c=>({'<':'&lt;','>':'&gt;','&':'&amp;','"':'&quot;'}[c]));}
+function fmtDate(d){ if(!d)return''; try{return new Date(d).toLocaleDateString('ru',{day:'2-digit',month:'long',year:'numeric'});}catch(e){return d;} }
+
+// одна пустая запись гостя
+function emptyGuest(){ return {last:'',first:'',middle:'',birth:'',citizenship:'BY',doc_type:'passport_by',doc_series:'',doc_number:'',doc_issued_by:'',doc_issued_date:'',personal_no:'',reg_address:''}; }
+
+let guests=[];
+let bookingCtx=null;
+
+async function load(){
+  try{
+    if(!token) throw new Error('no-token');
+    const r=await fetch(API+'/api/bookings/contract/'+encodeURIComponent(token));
+    const d=await r.json();
+    if(!d.ok||!d.booking){ return fail('Ссылка недействительна', d.error||'Возможно, данные уже заполнены или срок ссылки истёк.'); }
+    bookingCtx=d.booking;
+    if(d.guests&&d.guests.length){ guests=d.guests; }
+    else {
+      // по числу гостей из брони; первого пробуем предзаполнить из guest_name
+      const n=Math.max(1, parseInt(d.booking.guests_count||1,10)||1);
+      for(let i=0;i<n;i++){ const g=emptyGuest(); if(i===0&&d.booking.guest_name){ const p=String(d.booking.guest_name).trim().split(/\s+/); g.last=p[0]||''; g.first=p[1]||''; g.middle=p[2]||''; } guests.push(g); }
+    }
+    render();
+  }catch(e){
+    // ДЕМО/ПРЕВЬЮ: бэк-роут ещё не подключён или нет токена — показываем форму как есть,
+    // чтобы можно было посмотреть UI. В бою этот путь не сработает — будет реальная бронь.
+    bookingCtx=null; guests=[emptyGuest()];
+    render(true);
+  }
+}
+
+function guestBlock(g,i){
+  const rm = guests.length>1 ? '<button class="rm" onclick="removeGuest('+i+')">✕ убрать</button>' : '';
+  const isBY = g.citizenship==='BY';
+  return `<div class="gblock">
+    <div class="gblock-h"><span class="n">Гость ${i+1}</span>${rm}</div>
+    <div class="row3">
+      <div class="fg"><label>Фамилия *</label><input data-i="${i}" data-k="last" value="${esc(g.last)}" placeholder="Иванов"></div>
+      <div class="fg"><label>Имя *</label><input data-i="${i}" data-k="first" value="${esc(g.first)}" placeholder="Иван"></div>
+    </div>
+    <div class="row">
+      <div class="fg"><label>Отчество</label><input data-i="${i}" data-k="middle" value="${esc(g.middle)}" placeholder="Иванович"></div>
+      <div class="fg"><label>Дата рождения *</label><input data-i="${i}" data-k="birth" type="date" value="${esc(g.birth)}"></div>
+    </div>
+    <div class="row">
+      <div class="fg"><label>Гражданство</label>
+        <select data-i="${i}" data-k="citizenship" onchange="sync();render()">
+          <option value="BY"${isBY?' selected':''}>Беларусь</option>
+          <option value="RU"${g.citizenship==='RU'?' selected':''}>Россия</option>
+          <option value="OTHER"${(g.citizenship!=='BY'&&g.citizenship!=='RU')?' selected':''}>Другое</option>
+        </select>
+      </div>
+      <div class="fg"><label>Документ</label>
+        <select data-i="${i}" data-k="doc_type">
+          <option value="passport_by"${g.doc_type==='passport_by'?' selected':''}>Паспорт РБ</option>
+          <option value="passport_foreign"${g.doc_type==='passport_foreign'?' selected':''}>Иностранный паспорт</option>
+          <option value="residence"${g.doc_type==='residence'?' selected':''}>Вид на жительство</option>
+        </select>
+      </div>
+    </div>
+    <div class="row">
+      <div class="fg"><label>Серия и номер *</label><input data-i="${i}" data-k="doc_number" value="${esc(g.doc_number)}" placeholder="MP1234567"></div>
+      <div class="fg"><label>Дата выдачи</label><input data-i="${i}" data-k="doc_issued_date" type="date" value="${esc(g.doc_issued_date)}"></div>
+    </div>
+    <div class="fg"><label>Кем выдан</label><input data-i="${i}" data-k="doc_issued_by" value="${esc(g.doc_issued_by)}" placeholder="Например: Первомайский РУВД г. Минска"></div>
+    ${isBY?`<div class="fg"><label>Личный (идентификационный) номер</label><input data-i="${i}" data-k="personal_no" value="${esc(g.personal_no)}" placeholder="1234567A123AB4"></div>`:''}
+    <div class="fg"><label>Адрес регистрации (прописка)</label><input data-i="${i}" data-k="reg_address" value="${esc(g.reg_address)}" placeholder="Город, улица, дом, кв."></div>
+  </div>`;
+}
+
+function render(demo){
+  const bk = bookingCtx ? `<div class="card">
+      <div class="book">
+        <div class="book-ico">🏠</div>
+        <div><div class="book-t">${esc(bookingCtx.hotel_name||'Ваш объект')}</div>
+        <div class="book-m">${fmtDate(bookingCtx.check_in)} → ${fmtDate(bookingCtx.check_out)} · ${esc(bookingCtx.booking_num||'')}</div></div>
+      </div>
+      <div class="why">Эти данные нужны хозяину для <b>договора найма</b> и регистрации по месту пребывания (требование законодательства РБ). Мы передаём их <b>только хозяину</b> вашего объекта.</div>
+    </div>` : '';
+  const demoNote = demo ? '<div class="note">Предпросмотр формы. В боевой ссылке здесь будет ваша бронь.</div>' : '';
+  document.getElementById('app').innerHTML = bk + `
+    <div class="card">
+      ${demoNote}
+      <div class="sec-h">Данные проживающих</div>
+      <div class="sec-p">Укажите данные каждого, кто будет заселяться. Поля со звёздочкой обязательны.</div>
+      <div id="guests">${guests.map(guestBlock).join('')}</div>
+      <button class="add-btn" onclick="addGuest()">+ Добавить гостя</button>
+      <label class="agree">
+        <input type="checkbox" id="c-agree">
+        <span>Подтверждаю, что данные верны, и согласен(‑на) на их обработку для оформления договора и регистрации по месту пребывания. См. <a href="https://zaedem.by/privacy" target="_blank">политику конфиденциальности</a>.</span>
+      </label>
+      <button class="btn" id="c-submit" onclick="submitData()">Отправить хозяину</button>
+    </div>`;
+}
+
+// собрать значения инпутов обратно в guests[]
+function sync(){
+  document.querySelectorAll('#guests [data-i]').forEach(function(el){
+    const i=+el.getAttribute('data-i'), k=el.getAttribute('data-k');
+    if(guests[i]) guests[i][k]=el.value;
+  });
+}
+function addGuest(){ sync(); guests.push(emptyGuest()); render(); }
+function removeGuest(i){ sync(); guests.splice(i,1); if(!guests.length)guests=[emptyGuest()]; render(); }
+
+async function submitData(){
+  sync();
+  if(!document.getElementById('c-agree').checked){ alert('Пожалуйста, подтвердите согласие галочкой.'); return; }
+  for(let i=0;i<guests.length;i++){ const g=guests[i]; if(!g.last.trim()||!g.first.trim()){ alert('У гостя '+(i+1)+' не заполнены фамилия и имя.'); return; } }
+  const btn=document.getElementById('c-submit'); btn.disabled=true; btn.textContent='Отправляем…';
+  try{
+    const r=await fetch(API+'/api/bookings/contract/'+encodeURIComponent(token),{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({agree:true,guests:guests})});
+    const d=await r.json();
+    if(d.ok){ success(d.message); }
+    else { btn.disabled=false; btn.textContent='Отправить хозяину'; alert(d.error||'Не удалось отправить'); }
+  }catch(e){ btn.disabled=false; btn.textContent='Отправить хозяину'; alert('Сервис недоступен, попробуйте позже'); }
+}
+
+function success(msg){
+  document.getElementById('app').innerHTML='<div class="msg"><div class="ico">✅</div><h2>Спасибо!</h2><p>'+esc(msg||'Данные отправлены хозяину — он подготовит договор к заезду. Хорошей поездки!')+'</p></div>';
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function fail(t,p){
+  document.getElementById('app').innerHTML='<div class="msg"><div class="ico">🔗</div><h2>'+esc(t)+'</h2><p>'+esc(p)+'</p></div>';
+}
+
+load();
+</script>
+</body>
+</html>
