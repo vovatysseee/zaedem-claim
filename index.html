@@ -117,6 +117,14 @@ function render(o){
         <div class="fg"><label>Телефон</label><input id="c-phone" value="${esc(o.phone)}" placeholder="+375 __ ___-__-__"></div>
         <div class="fg"><label>Email</label><input id="c-email" value="${esc(o.email)}" placeholder="you@mail.by"></div>
       </div>
+      <div class="sec-h" style="font-size:14px;margin-top:4px">Как с вами связаться</div>
+      <div class="sec-p">Telegram / WhatsApp / Viber — гость увидит их в письме-подтверждении брони.</div>
+      <div class="row">
+        <div class="fg"><label>Telegram</label><input id="c-tg" value="${esc(o.contact_tg)}" placeholder="@username"></div>
+        <div class="fg"><label>WhatsApp</label><input id="c-wa" value="${esc(o.contact_wa)}" placeholder="+375…"></div>
+      </div>
+      <div class="fg"><label>Viber</label><input id="c-viber" value="${esc(o.contact_viber)}" placeholder="+375…"></div>
+      <div class="fg"><label>Правила дома</label><textarea id="c-rules" placeholder="Например: заезд с 14:00, тихий час с 23:00, без вечеринок">${esc(o.house_rules)}</textarea></div>
       <div class="acct">
         <div class="sec-h" style="font-size:14px">Доступ в личный кабинет</div>
         <div class="sec-p">Придумайте пароль — сразу получите кабинет для управления бронями, ценами и объектом.</div>
@@ -144,6 +152,10 @@ async function submitClaim(){
     description_ru:document.getElementById('c-desc').value.trim(),
     phone:document.getElementById('c-phone').value.trim(),
     email:document.getElementById('c-email').value.trim(),
+    contact_tg:document.getElementById('c-tg').value.trim(),
+    contact_wa:document.getElementById('c-wa').value.trim(),
+    contact_viber:document.getElementById('c-viber').value.trim(),
+    house_rules:document.getElementById('c-rules').value.trim(),
     owner_email:document.getElementById('c-oemail').value.trim(),
     owner_password:document.getElementById('c-opass').value
   };
