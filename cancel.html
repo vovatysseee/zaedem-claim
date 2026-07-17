@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<title>Отмена брони — Заедем.by</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600;700;800;900&family=Golos+Text:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#0c0c0c;--ink2:#1e1e1e;--muted:#6b6b6b;--hint:#aaa;--sand:#faf8f4;--sand2:#f2efe8;--sand3:#e5e0d5;--green:#1a5c38;--green2:#246b44;--lime:#c9f135;--white:#fff;--red:#c0392b;--sh:0 2px 16px rgba(0,0,0,.06)}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Golos Text',sans-serif;background:var(--sand);color:var(--ink);line-height:1.55;-webkit-font-smoothing:antialiased}
+.logo{font-family:'Unbounded',sans-serif;font-weight:900;font-size:1.35rem;color:var(--lime);letter-spacing:-1px}
+.logo em{font-style:normal;color:#fff}
+.hero{position:relative;overflow:hidden;background:linear-gradient(135deg,#0F2D1D,#081C12,#16402A,#081C12,#0F2D1D);background-size:400% 400%;animation:hg 28s ease infinite;padding:26px 18px 30px;text-align:center}
+@keyframes hg{0%{background-position:0 50%}50%{background-position:100% 50%}100%{background-position:0 50%}}
+.hero-badge{display:inline-flex;align-items:center;gap:7px;background:rgba(201,241,53,.16);border:1px solid rgba(201,241,53,.35);color:var(--lime);font-size:12px;font-weight:700;padding:7px 15px;border-radius:50px;margin:18px 0 12px}
+.hero h1{font-family:'Unbounded',sans-serif;font-weight:800;font-size:clamp(19px,5vw,26px);color:#fff;line-height:1.2;letter-spacing:-.5px}
+.wrap{max-width:560px;margin:0 auto;padding:0 16px}
+.card{background:var(--white);border-radius:18px;box-shadow:var(--sh);padding:20px;margin:-18px 0 16px;position:relative}
+.card+.card{margin-top:0}
+.book{display:flex;gap:14px;align-items:center}
+.book-ico{width:46px;height:46px;border-radius:12px;background:rgba(26,92,56,.08);display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0}
+.book-t{font-family:'Unbounded',sans-serif;font-weight:700;font-size:16px;line-height:1.25}
+.book-m{color:var(--muted);font-size:12.5px;margin-top:3px}
+.sec-h{font-family:'Unbounded',sans-serif;font-size:15px;font-weight:700;margin-bottom:8px}
+.rules{font-size:13.5px;color:var(--ink2);line-height:1.7;white-space:pre-line;background:var(--sand);border:1px solid var(--sand3);border-radius:12px;padding:14px 16px}
+.rules.empty{color:var(--muted)}
+.btn{width:100%;background:var(--red);color:#fff;border:none;border-radius:13px;padding:16px;font-size:15px;font-weight:700;font-family:'Unbounded',sans-serif;letter-spacing:-.2px;cursor:pointer;transition:.15s;margin-top:16px}
+.btn:hover{filter:brightness(.95)}
+.btn:disabled{opacity:.55;cursor:not-allowed}
+.btn-ghost{width:100%;background:none;color:var(--muted);border:none;padding:14px;font-size:13.5px;font-family:inherit;cursor:pointer;margin-top:4px;text-decoration:underline;text-underline-offset:3px}
+.spin{width:38px;height:38px;border:3px solid var(--sand3);border-top-color:var(--green);border-radius:50%;margin:80px auto;animation:sp .7s linear infinite}
+@keyframes sp{to{transform:rotate(360deg)}}
+.msg{text-align:center;padding:48px 24px}
+.msg .ico{font-size:56px;margin-bottom:18px}
+.msg h2{font-family:'Unbounded',sans-serif;font-size:22px;margin-bottom:10px}
+.msg p{color:var(--muted);font-size:14px;max-width:400px;margin:0 auto}
+.foot{text-align:center;color:var(--hint);font-size:11px;padding:24px 0 40px}
+</style>
+</head>
+<body>
+<div class="hero">
+  <div class="logo">Заедем<em>.by</em></div>
+  <div class="hero-badge">Отмена брони</div>
+  <h1>Отмена бронирования</h1>
+</div>
+<div class="wrap">
+  <div id="app"><div class="spin"></div></div>
+</div>
+<div class="foot">Заедем.by · Платформа бронирования жилья</div>
+<script>
+const API='https://api.zaedem.by';
+const token=(new URLSearchParams(location.search).get('t')||location.hash.replace('#','')||'').trim();
+
+function esc(s){return String(s==null?'':s).replace(/[<>&"]/g,c=>({'<':'&lt;','>':'&gt;','&':'&amp;','"':'&quot;'}[c]));}
+function fmtDate(d){ if(!d)return''; try{return new Date(d).toLocaleDateString('ru',{day:'2-digit',month:'long',year:'numeric'});}catch(e){return d;} }
+
+let bk=null;
+
+async function load(){
+  if(!token){ return fail('Ссылка неполная','Откройте ссылку «Управление бронированием» из письма целиком.'); }
+  try{
+    const r=await fetch(API+'/api/bookings/manage/'+encodeURIComponent(token));
+    const d=await r.json();
+    if(!r.ok||!d.booking){ return fail('Бронь не найдена', d.error||'Ссылка недействительна.'); }
+    bk=d.booking;
+    if(bk.status==='cancelled'){ return done('Бронь уже отменена','Эта бронь ранее была отменена. Если нужна помощь — свяжитесь с нами.'); }
+    render();
+  }catch(e){ fail('Не удалось загрузить','Проверьте интернет и попробуйте ещё раз.'); }
+}
+
+function render(){
+  const rules = bk.cancel_rules
+    ? `<div class="rules">${esc(bk.cancel_rules)}</div>`
+    : `<div class="rules empty">Правила отмены для этого объекта не указаны. Возврат средств рассматривается индивидуально — при вопросах свяжитесь с нами.</div>`;
+  document.getElementById('app').innerHTML=`
+    <div class="card">
+      <div class="book">
+        <div class="book-ico">🏠</div>
+        <div><div class="book-t">${esc(bk.hotel_name||'Ваш объект')}</div>
+        <div class="book-m">${fmtDate(bk.check_in)} → ${fmtDate(bk.check_out)} · ${esc(bk.booking_num||'')}</div></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="sec-h">Правила отмены</div>
+      ${rules}
+      <button class="btn" id="cx-btn" onclick="doCancel()">Отменить бронь</button>
+      <button class="btn-ghost" onclick="history.length>1?history.back():window.close()">Оставить бронь</button>
+    </div>`;
+}
+
+async function doCancel(){
+  if(!confirm('Точно отменить бронь '+bk.booking_num+'? Действие необратимо.'))return;
+  const btn=document.getElementById('cx-btn'); btn.disabled=true; btn.textContent='Отменяем…';
+  try{
+    const r=await fetch(API+'/api/bookings/cancel/'+encodeURIComponent(bk.booking_num),{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({token:token})});
+    const d=await r.json();
+    if(r.ok&&(d.ok||d.success||d.status==='cancelled')){
+      done('Бронь отменена','Возврат средств — по правилам объекта. Если возникнут вопросы, свяжитесь с нами.');
+    } else {
+      btn.disabled=false; btn.textContent='Отменить бронь';
+      alert(d.error||'Не удалось отменить бронь');
+    }
+  }catch(e){ btn.disabled=false; btn.textContent='Отменить бронь'; alert('Сервис недоступен, попробуйте позже'); }
+}
+
+function done(t,p){
+  document.getElementById('app').innerHTML='<div class="msg"><div class="ico">✅</div><h2>'+esc(t)+'</h2><p>'+esc(p)+'</p></div>';
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function fail(t,p){
+  document.getElementById('app').innerHTML='<div class="msg"><div class="ico">🔗</div><h2>'+esc(t)+'</h2><p>'+esc(p)+'</p></div>';
+}
+
+load();
+</script>
+</body>
+</html>
