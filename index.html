@@ -129,6 +129,7 @@ function render(o){
       </div>
       <div class="fg"><label>Viber</label><input id="c-viber" value="${esc(o.contact_viber)}" placeholder="+375…"></div>
       <div class="fg"><label>Правила дома</label><textarea id="c-rules" placeholder="Например: заезд с 14:00, тихий час с 23:00, без вечеринок">${esc(o.house_rules)}</textarea></div>
+      <div class="fg"><label>Правила отмены <span style="color:var(--muted);font-weight:400">(покажутся гостю при отмене)</span></label><textarea id="c-cancel" placeholder="Например: бесплатная отмена за 3 дня; позже — удерживается 1 ночь">${esc(o.cancel_rules)}</textarea></div>
       <div class="acct">
         <div class="sec-h" style="font-size:14px">Доступ в личный кабинет</div>
         <div class="sec-p">Придумайте пароль — сразу получите кабинет для управления бронями, ценами и объектом.</div>
@@ -176,6 +177,7 @@ async function submitClaim(){
     contact_wa:document.getElementById('c-wa').value.trim(),
     contact_viber:document.getElementById('c-viber').value.trim(),
     house_rules:document.getElementById('c-rules').value.trim(),
+    cancel_rules:document.getElementById('c-cancel').value.trim(),
     owner_email:document.getElementById('c-oemail').value.trim(),
     owner_password:document.getElementById('c-opass').value
   };
