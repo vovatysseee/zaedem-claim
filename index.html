@@ -2,7 +2,11 @@
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<!-- maximum-scale=1 убран: он запрещает увеличение страницы целиком. На главном
+     сайте щипок оставлен намеренно — им читают мелкий текст, а заметная часть
+     хозяев старше пятидесяти. Здесь вводят адрес, телефон и правила отмены
+     с телефона, то есть запрет мешает сильнее всего. -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Ваш объект на Заедем.by</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -135,7 +139,7 @@ function render(o){
         <div class="sec-p">Придумайте пароль — сразу получите кабинет для управления бронями, ценами и объектом.</div>
         <div class="row">
           <div class="fg"><label>Email для входа</label><input id="c-oemail" value="${esc(o.email)}" placeholder="you@mail.by"></div>
-          <div class="fg"><label>Пароль</label><input id="c-opass" type="password" placeholder="минимум 6 символов"></div>
+          <div class="fg"><label>Пароль</label><input id="c-opass" type="password" placeholder="минимум 8 символов" minlength="8"></div>
         </div>
       </div>
       <label class="agree">
@@ -161,6 +165,15 @@ async function loadCitiesClaim(selId){
 
 async function submitClaim(){
   if(!document.getElementById('c-agree').checked){ alert('Пожалуйста, подтвердите согласие галочкой — без этого мы не можем разместить объект.'); return; }
+  // Проверяем ДО отправки. Сервер требует минимум 8 знаков; раньше страница
+  // обещала 6 и ничего не проверяла — человек вводил семь, получал сухой отказ
+  // и не понимал, что не так. Это первое его действие на платформе.
+  const _pw = document.getElementById('c-opass');
+  if (_pw && _pw.value && _pw.value.length < 8) {
+    alert('Пароль должен быть не короче 8 символов');
+    _pw.focus();
+    return;
+  }
   const btn=document.getElementById('c-submit'); btn.disabled=true; btn.textContent='Отправляем…';
   let lat=null,lng=null; const ll=document.getElementById('c-latlng').value.trim();
   if(ll){ const m=ll.split(',').map(s=>parseFloat(s.trim())); if(m.length===2&&!isNaN(m[0])&&!isNaN(m[1])){ lat=m[0]; lng=m[1]; } }
