@@ -96,7 +96,7 @@ function esc(s){return String(s==null?'':s).replace(/[<>&"]/g,c=>({'<':'&lt;','>
 function fmtDate(d){ if(!d)return''; try{return new Date(d).toLocaleDateString('ru',{day:'2-digit',month:'long',year:'numeric'});}catch(e){return d;} }
 
 // одна пустая запись гостя
-function emptyGuest(){ return {last:'',first:'',middle:'',birth:'',citizenship:'BY',doc_type:'passport_by',doc_series:'',doc_number:'',doc_issued_by:'',doc_issued_date:'',personal_no:'',reg_address:''}; }
+function emptyGuest(){ return {last:'',first:'',middle:'',birth:'',citizenship:'BY',citizenship_other:'',doc_type:'passport_by',doc_series:'',doc_number:'',doc_issued_by:'',doc_issued_date:'',personal_no:'',reg_address:''}; }
 
 let guests=[];
 let bookingCtx=null;
@@ -157,6 +157,7 @@ function guestBlock(g,i){
       <div class="fg"><label>Дата выдачи</label><input data-i="${i}" data-k="doc_issued_date" type="date" value="${esc(g.doc_issued_date)}"></div>
     </div>
     <div class="fg"><label>Кем выдан</label><input data-i="${i}" data-k="doc_issued_by" value="${esc(g.doc_issued_by)}" placeholder="Например: Первомайский РУВД г. Минска"></div>
+    ${(!isBY && g.citizenship!=='RU')?`<div class="fg"><label>Страна гражданства *</label><input data-i="${i}" data-k="citizenship_other" value="${esc(g.citizenship_other)}" placeholder="Например: Литва"></div>`:''}
     ${isBY?`<div class="fg"><label>Личный (идентификационный) номер</label><input data-i="${i}" data-k="personal_no" value="${esc(g.personal_no)}" placeholder="1234567A123AB4"></div>`:''}
     <div class="fg"><label>Адрес регистрации (прописка)</label><input data-i="${i}" data-k="reg_address" value="${esc(g.reg_address)}" placeholder="Город, улица, дом, кв."></div>
   </div>`;
@@ -200,7 +201,15 @@ function removeGuest(i){ sync(); guests.splice(i,1); if(!guests.length)guests=[e
 async function submitData(){
   sync();
   if(!document.getElementById('c-agree').checked){ alert('Пожалуйста, подтвердите согласие галочкой.'); return; }
-  for(let i=0;i<guests.length;i++){ const g=guests[i]; if(!g.last.trim()||!g.first.trim()){ alert('У гостя '+(i+1)+' не заполнены фамилия и имя.'); return; } }
+  for(let i=0;i<guests.length;i++){
+    const g=guests[i];
+    if(!g.last.trim()||!g.first.trim()){ alert('У гостя '+(i+1)+' не заполнены фамилия и имя.'); return; }
+    // При гражданстве «Другое» страну нужно назвать словами: для регистрации
+    // по месту пребывания хозяину нужна страна, а не пометка «другое».
+    if(g.citizenship!=='BY'&&g.citizenship!=='RU'&&!String(g.citizenship_other||'').trim()){
+      alert('У гостя '+(i+1)+' укажите страну гражданства.'); return;
+    }
+  }
   const btn=document.getElementById('c-submit'); btn.disabled=true; btn.textContent='Отправляем…';
   try{
     const r=await fetch(API+'/api/bookings/contract/'+encodeURIComponent(token),{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({agree:true,guests:guests})});
