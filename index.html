@@ -204,7 +204,7 @@ async function submitClaim(){
 
 function declineObj(){
   if(!confirm('Убрать это объявление? Оно нигде не появится и никто его не увидит.'))return;
-  document.getElementById('app').innerHTML='<div class="msg"><div class="ico">👋</div><h2>Хорошо!</h2><p>Объявление не будет размещено. Спасибо, что уделили время. Если передумаете — просто напишите нам.</p></div>';
+  document.getElementById('app').innerHTML='<div class="msg"><div class="ico">👋</div><h2>Хорошо!</h2><p>Объявление не будет размещено. Спасибо, что уделили время. Если передумаете — напишите на <a href="mailto:hotel@zaedem.by">hotel@zaedem.by</a>.</p></div>';
   window.scrollTo({top:0,behavior:'smooth'});
 }
 
