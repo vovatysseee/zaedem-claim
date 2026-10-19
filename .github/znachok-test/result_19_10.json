@@ -2,7 +2,7 @@
  "date": "2026-10-19",
  "total": 140,
  "failed": 0,
- "apple_touch_icon_sha256": "9eaea2855c496144af86ffa5325717db47909d303590fe6effaf02c06bac5723",
+ "apple_touch_icon_sha256": "96b875dd92a0bc65cebe59afe44d65ba22851d6fec11cf0bfaa559dfe646aec6",
  "results": [
   {
    "name": "390 claim: значок вкладки — тот же SVG, что на zaedem.by",
@@ -17,12 +17,12 @@
   {
    "name": "390 claim: значок рисуется — фон #0F2D1D и лаймовая «З»",
    "ok": true,
-   "info": "{\"bg\":[15,45,29],\"lime\":221}"
+   "info": "{\"bg\":[15,45,29],\"lime\":235}"
   },
   {
    "name": "390 claim: файл /apple-touch-icon.png отдаётся (image/png) и совпадает с файлом сайта",
    "ok": true,
-   "info": "{\"ok\":true,\"type\":\"image/png\",\"len\":2527,\"sha\":\"9eaea2855c496144af86ffa5325717db47909d303590fe6effaf02c06bac5723\"}"
+   "info": "{\"ok\":true,\"type\":\"image/png\",\"len\":4238,\"sha\":\"96b875dd92a0bc65cebe59afe44d65ba22851d6fec11cf0bfaa559dfe646aec6\"}"
   },
   {
    "name": "390 claim: логотип в шапке «Заедем.by» (Unbounded, лайм + белое «.by»)",
@@ -97,12 +97,12 @@
   {
    "name": "390 contract: значок рисуется — фон #0F2D1D и лаймовая «З»",
    "ok": true,
-   "info": "{\"bg\":[15,45,29],\"lime\":221}"
+   "info": "{\"bg\":[15,45,29],\"lime\":235}"
   },
   {
    "name": "390 contract: файл /apple-touch-icon.png отдаётся (image/png) и совпадает с файлом сайта",
    "ok": true,
-   "info": "{\"ok\":true,\"type\":\"image/png\",\"len\":2527,\"sha\":\"9eaea2855c496144af86ffa5325717db47909d303590fe6effaf02c06bac5723\"}"
+   "info": "{\"ok\":true,\"type\":\"image/png\",\"len\":4238,\"sha\":\"96b875dd92a0bc65cebe59afe44d65ba22851d6fec11cf0bfaa559dfe646aec6\"}"
   },
   {
    "name": "390 contract: логотип в шапке «Заедем.by» (Unbounded, лайм + белое «.by»)",
@@ -157,12 +157,12 @@
   {
    "name": "390 cancel: значок рисуется — фон #0F2D1D и лаймовая «З»",
    "ok": true,
-   "info": "{\"bg\":[15,45,29],\"lime\":221}"
+   "info": "{\"bg\":[15,45,29],\"lime\":235}"
   },
   {
    "name": "390 cancel: файл /apple-touch-icon.png отдаётся (image/png) и совпадает с файлом сайта",
    "ok": true,
-   "info": "{\"ok\":true,\"type\":\"image/png\",\"len\":2527,\"sha\":\"9eaea2855c496144af86ffa5325717db47909d303590fe6effaf02c06bac5723\"}"
+   "info": "{\"ok\":true,\"type\":\"image/png\",\"len\":4238,\"sha\":\"96b875dd92a0bc65cebe59afe44d65ba22851d6fec11cf0bfaa559dfe646aec6\"}"
   },
   {
    "name": "390 cancel: логотип в шапке «Заедем.by» (Unbounded, лайм + белое «.by»)",
@@ -367,12 +367,12 @@
   {
    "name": "1366 claim: значок рисуется — фон #0F2D1D и лаймовая «З»",
    "ok": true,
-   "info": "{\"bg\":[15,45,29],\"lime\":221}"
+   "info": "{\"bg\":[15,45,29],\"lime\":235}"
   },
   {
    "name": "1366 claim: файл /apple-touch-icon.png отдаётся (image/png) и совпадает с файлом сайта",
    "ok": true,
-   "info": "{\"ok\":true,\"type\":\"image/png\",\"len\":2527,\"sha\":\"9eaea2855c496144af86ffa5325717db47909d303590fe6effaf02c06bac5723\"}"
+   "info": "{\"ok\":true,\"type\":\"image/png\",\"len\":4238,\"sha\":\"96b875dd92a0bc65cebe59afe44d65ba22851d6fec11cf0bfaa559dfe646aec6\"}"
   },
   {
    "name": "1366 claim: логотип в шапке «Заедем.by» (Unbounded, лайм + белое «.by»)",
@@ -447,12 +447,12 @@
   {
    "name": "1366 contract: значок рисуется — фон #0F2D1D и лаймовая «З»",
    "ok": true,
-   "info": "{\"bg\":[15,45,29],\"lime\":221}"
+   "info": "{\"bg\":[15,45,29],\"lime\":235}"
   },
   {
    "name": "1366 contract: файл /apple-touch-icon.png отдаётся (image/png) и совпадает с файлом сайта",
    "ok": true,
-   "info": "{\"ok\":true,\"type\":\"image/png\",\"len\":2527,\"sha\":\"9eaea2855c496144af86ffa5325717db47909d303590fe6effaf02c06bac5723\"}"
+   "info": "{\"ok\":true,\"type\":\"image/png\",\"len\":4238,\"sha\":\"96b875dd92a0bc65cebe59afe44d65ba22851d6fec11cf0bfaa559dfe646aec6\"}"
   },
   {
    "name": "1366 contract: логотип в шапке «Заедем.by» (Unbounded, лайм + белое «.by»)",
@@ -507,12 +507,12 @@
   {
    "name": "1366 cancel: значок рисуется — фон #0F2D1D и лаймовая «З»",
    "ok": true,
-   "info": "{\"bg\":[15,45,29],\"lime\":221}"
+   "info": "{\"bg\":[15,45,29],\"lime\":235}"
   },
   {
    "name": "1366 cancel: файл /apple-touch-icon.png отдаётся (image/png) и совпадает с файлом сайта",
    "ok": true,
-   "info": "{\"ok\":true,\"type\":\"image/png\",\"len\":2527,\"sha\":\"9eaea2855c496144af86ffa5325717db47909d303590fe6effaf02c06bac5723\"}"
+   "info": "{\"ok\":true,\"type\":\"image/png\",\"len\":4238,\"sha\":\"96b875dd92a0bc65cebe59afe44d65ba22851d6fec11cf0bfaa559dfe646aec6\"}"
   },
   {
    "name": "1366 cancel: логотип в шапке «Заедем.by» (Unbounded, лайм + белое «.by»)",
