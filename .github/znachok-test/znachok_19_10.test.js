@@ -8,7 +8,10 @@
 //     cancel — отмена брони по ссылке из ваучера «cancel.html?t=…» (с заглушкой API: проверяется, что
 //     в POST /api/bookings/cancel/<номер> уходит токен, и что бронь после ответа показана отменённой; отказ сервера —
 //     бронь остаётся, кнопка снова доступна; уже отменённая бронь);
-//  5) ошибок в консоли нет, горизонтальной прокрутки нет.
+//  5) ошибок в консоли нет, горизонтальной прокрутки нет;
+//  6) экран «Бронь отменена» показывает refund_text из ответа бэкенда (порция 39, zaedem-backend#21) как есть:
+//     полный возврат, возврат с удержанием, тестовая бронь (+ текст приходит с сервера — разметка в нём не исполняется);
+//     в ответе без refund_text — прежний текст «Возврат средств — по правилам объекта».
 // Все ответы API — заглушки (https://api.zaedem.by перехватывается), шрифты Google — пустой CSS, страницы
 // отдаются локально. Экраны: 390×844 (тач) и 1366×768. Запуск из корня репозитория:
 //   node .github/znachok-test/znachok_19_10.test.js        (ZB_VP=390|1366 — только один экран)
@@ -263,6 +266,76 @@ async function testCancel(browser, base, vp) {
   await ctx.close();
 }
 
+// 19.10: сумма возврата на экране «Бронь отменена» — три варианта ответа бэкенда порции 39 (refund_text и refund{…})
+const REFUND_CASES = [
+  { key: 'polnyj', title: 'полный возврат', text: 'Вернём полностью, 13.00 BYN — до 30 рабочих дней на ту же карту.',
+    refund: { paid: true, test: false, amount: 13, penalty: 0, full: true, currency: 'BYN', term: 'до 30 рабочих дней на ту же карту' } },
+  { key: 'uderzhanie', title: 'возврат с удержанием', text: 'Вернём 8.00 BYN, удержание по правилам отмены — 5.00 BYN — до 30 рабочих дней на ту же карту.',
+    refund: { paid: true, test: false, amount: 8, penalty: 5, full: false, currency: 'BYN', term: 'до 30 рабочих дней на ту же карту' } },
+  { key: 'test', title: 'тестовая бронь', text: 'Тестовая бронь: оплата не списывалась, возвращать нечего.',
+    refund: { paid: false, test: true, amount: 0, penalty: 0, full: null, currency: 'BYN' } },
+];
+
+async function testCancelRefund(browser, base, vp) {
+  for (const c of REFUND_CASES) {
+    const L = vp + ' cancel возврат (' + c.title + ')';
+    const st = mkState(async (route, u, m) => {
+      if (u.pathname === '/api/bookings/manage/' + TOKEN && m === 'GET') return json(route, 200, { booking: BOOKING, manage_token: TOKEN });
+      if (u.pathname === '/api/bookings/cancel/' + NUM && m === 'POST') return json(route, 200, { success: true, booking_num: NUM, status: 'cancelled', refund_text: c.text, refund: { ...c.refund, text: c.text } });
+      return json(route, 404, { error: 'нет заглушки' });
+    });
+    const { ctx, page, errors } = await open(browser, base, vp, st);
+    await page.goto(base + '/cancel.html?t=' + TOKEN, { waitUntil: 'load' });
+    await page.waitForSelector('#cx-btn');
+    await page.click('#cx-btn');
+    await page.waitForSelector('.msg h2');
+    check(L + ': заголовок «Бронь отменена»', (await page.textContent('.msg h2')) === 'Бронь отменена');
+    check(L + ': refund_text показан как есть', (await page.locator('.msg p.refund').count()) === 1 && (await page.textContent('.msg p.refund')) === c.text, await page.locator('.msg p.refund').allTextContents().then(a => a.join('|')));
+    const all = await page.textContent('.msg');
+    check(L + ': общего «по правилам объекта» нет, остаётся «Если возникнут вопросы, свяжитесь с нами»', !/по правилам объекта\./.test(all) && /Если возникнут вопросы, свяжитесь с нами\./.test(all));
+    const vis = await page.evaluate(() => { const r = document.querySelector('.msg p.refund').getBoundingClientRect(); return r.width > 100 && r.height > 10 && r.right <= window.innerWidth && r.left >= 0; });
+    check(L + ': строка видна и целиком в экране', vis);
+    await page.screenshot({ path: path.join(SHOTS, vp + '_6_cancel_vozvrat_' + c.key + '.png'), fullPage: false });
+    await commonChecks(page, errors, L, vp);
+    await ctx.close();
+  }
+
+  // текст приходит с сервера: разметка в нём не должна исполняться
+  {
+    const L = vp + ' cancel возврат (экранирование)';
+    const evil = 'Вернём <b id="x">13.00</b> BYN & <img src=x onerror="window.__pwn=1">';
+    const st = mkState(async (route, u, m) => {
+      if (u.pathname === '/api/bookings/manage/' + TOKEN) return json(route, 200, { booking: BOOKING });
+      if (u.pathname === '/api/bookings/cancel/' + NUM) return json(route, 200, { success: true, booking_num: NUM, status: 'cancelled', refund_text: evil });
+      return json(route, 404, { error: 'нет заглушки' });
+    });
+    const { ctx, page, errors } = await open(browser, base, vp, st);
+    await page.goto(base + '/cancel.html?t=' + TOKEN, { waitUntil: 'load' });
+    await page.waitForSelector('#cx-btn');
+    await page.click('#cx-btn');
+    await page.waitForSelector('.msg p.refund');
+    check(L + ': разметка в refund_text показана текстом, не исполнена', (await page.textContent('.msg p.refund')) === evil && (await page.locator('.msg p.refund b, .msg p.refund img').count()) === 0 && !(await page.evaluate(() => window.__pwn)));
+    await ctx.close();
+  }
+
+  // пустой / не строка refund_text — прежний текст
+  for (const bad of ['', '   ', null, 123]) {
+    const L = vp + ' cancel возврат (refund_text = ' + JSON.stringify(bad) + ')';
+    const st = mkState(async (route, u, m) => {
+      if (u.pathname === '/api/bookings/manage/' + TOKEN) return json(route, 200, { booking: BOOKING });
+      if (u.pathname === '/api/bookings/cancel/' + NUM) return json(route, 200, { success: true, booking_num: NUM, status: 'cancelled', refund_text: bad });
+      return json(route, 404, { error: 'нет заглушки' });
+    });
+    const { ctx, page } = await open(browser, base, vp, st);
+    await page.goto(base + '/cancel.html?t=' + TOKEN, { waitUntil: 'load' });
+    await page.waitForSelector('#cx-btn');
+    await page.click('#cx-btn');
+    await page.waitForSelector('.msg h2');
+    check(L + ': прежний текст «Возврат средств — по правилам объекта», строки возврата нет', /Возврат средств — по правилам объекта\. Если возникнут вопросы/.test(await page.textContent('.msg p')) && (await page.locator('.msg p.refund').count()) === 0);
+    await ctx.close();
+  }
+}
+
 (async () => {
   const sha = crypto.createHash('sha256').update(fs.readFileSync(path.join(ROOT, 'apple-touch-icon.png'))).digest('hex');
   const srv = await serve();
@@ -276,6 +349,7 @@ async function testCancel(browser, base, vp) {
     await testClaimBadToken(browser, base, vp);
     await testContract(browser, base, vp);
     await testCancel(browser, base, vp);
+    await testCancelRefund(browser, base, vp);
   }
   await browser.close(); srv.close();
   const fail = results.filter(r => !r.ok);

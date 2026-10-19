@@ -51,6 +51,8 @@ body{font-family:'Golos Text',sans-serif;background:var(--sand);color:var(--ink)
 .msg .ico{font-size:56px;margin-bottom:18px}
 .msg h2{font-family:'Unbounded',sans-serif;font-size:22px;margin-bottom:10px}
 .msg p{color:var(--muted);font-size:14px;max-width:400px;margin:0 auto}
+/* 19.10: сумма возврата из ответа сервера (refund_text) — заметнее общего пояснения */
+.msg p.refund{color:var(--ink2);font-weight:600;margin-bottom:12px}
 .foot{text-align:center;color:var(--hint);font-size:11px;padding:24px 0 40px}
 </style>
 </head>
@@ -113,7 +115,12 @@ async function doCancel(){
     const r=await fetch(API+'/api/bookings/cancel/'+encodeURIComponent(bk.booking_num),{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({token:token})});
     const d=await r.json();
     if(r.ok&&(d.ok||d.success||d.status==='cancelled')){
-      done('Бронь отменена','Возврат средств — по правилам объекта. Если возникнут вопросы, свяжитесь с нами.');
+      // 19.10: бэкенд (порция 39) присылает refund_text — готовая фраза о сумме и сроке возврата
+      // («Вернём полностью, 13.00 BYN — …», «Тестовая бронь: оплата не списывалась…»). Показываем как есть,
+      // вместо общего «по правилам объекта». Нет refund_text (старый бэкенд, сбой расчёта) — прежний текст.
+      const rt=(typeof d.refund_text==='string')?d.refund_text.trim():'';
+      if(rt) done('Бронь отменена','Если возникнут вопросы, свяжитесь с нами.',rt);
+      else done('Бронь отменена','Возврат средств — по правилам объекта. Если возникнут вопросы, свяжитесь с нами.');
     } else {
       btn.disabled=false; btn.textContent='Отменить бронь';
       alert(d.error||'Не удалось отменить бронь');
@@ -121,8 +128,9 @@ async function doCancel(){
   }catch(e){ btn.disabled=false; btn.textContent='Отменить бронь'; alert('Сервис недоступен, попробуйте позже'); }
 }
 
-function done(t,p){
-  document.getElementById('app').innerHTML='<div class="msg"><div class="ico">✅</div><h2>'+esc(t)+'</h2><p>'+esc(p)+'</p></div>';
+function done(t,p,refund){
+  // 19.10: refund — необязательная строка о возврате; esc() — текст приходит с сервера и вставляется в разметку
+  document.getElementById('app').innerHTML='<div class="msg"><div class="ico">✅</div><h2>'+esc(t)+'</h2>'+(refund?'<p class="refund">'+esc(refund)+'</p>':'')+'<p>'+esc(p)+'</p></div>';
   window.scrollTo({top:0,behavior:'smooth'});
 }
 function fail(t,p){
