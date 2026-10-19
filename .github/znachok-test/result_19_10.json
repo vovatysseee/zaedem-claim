@@ -1,0 +1,478 @@
+{
+ "date": "2026-10-19",
+ "total": 94,
+ "failed": 0,
+ "apple_touch_icon_sha256": "9eaea2855c496144af86ffa5325717db47909d303590fe6effaf02c06bac5723",
+ "results": [
+  {
+   "name": "390 claim: значок вкладки — тот же SVG, что на zaedem.by",
+   "ok": true,
+   "info": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'"
+  },
+  {
+   "name": "390 claim: apple-touch-icon указан",
+   "ok": true,
+   "info": "/apple-touch-icon.png"
+  },
+  {
+   "name": "390 claim: значок рисуется — фон #0F2D1D и лаймовая «З»",
+   "ok": true,
+   "info": "{\"bg\":[15,45,29],\"lime\":221}"
+  },
+  {
+   "name": "390 claim: файл /apple-touch-icon.png отдаётся (image/png) и совпадает с файлом сайта",
+   "ok": true,
+   "info": "{\"ok\":true,\"type\":\"image/png\",\"len\":2527,\"sha\":\"9eaea2855c496144af86ffa5325717db47909d303590fe6effaf02c06bac5723\"}"
+  },
+  {
+   "name": "390 claim: логотип в шапке «Заедем.by» (Unbounded, лайм + белое «.by»)",
+   "ok": true,
+   "info": "{\"text\":\"Заедем.by\",\"color\":\"rgb(201, 241, 53)\",\"font\":\"Unbounded, sans-serif\",\"emColor\":\"rgb(255, 255, 255)\",\"w\":354,\"h\":33.46875}"
+  },
+  {
+   "name": "390 claim: подпись платформы в подвале",
+   "ok": true,
+   "info": "Заедем.by · Белорусская платформа бронирования жилья"
+  },
+  {
+   "name": "390 claim: старых вариантов подписи нет (title, текст, мета, исходник)",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "name": "390 claim: форма загрузилась из ответа заглушки, город выбран",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "name": "390 claim: без галочки согласия запрос не уходит",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "name": "390 claim: отправка — POST с согласием, городом и паролем",
+   "ok": true,
+   "info": "{\"agree\":true,\"name_ru\":\"Усадьба «Тестовая»\",\"address\":\"д. Тестовая, 1\",\"city_id\":\"2\",\"lat\":null,\"lng\":null,\"description_ru\":\"Описание\",\"phone\":\"+375291112233\",\"email\":\"o@example.by\",\"contact_tg\":\"\",\"contact_wa\":\"\",\"contact_viber\":\"\",\"house_rules\":\"\",\"cancel_rules\":\"\",\"owner_email\":\"o@example.by\",\"owner_password\":\"12345678\"}"
+  },
+  {
+   "name": "390 claim: экран «Готово!» с текстом сервера",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "name": "390 claim: нет горизонтальной прокрутки",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "name": "390 claim: ошибок в консоли нет",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "name": "390 claim (недействительная ссылка): «Ссылка недействительна» и подвал на месте",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "name": "390 claim (недействительная ссылка): нет горизонтальной прокрутки",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "name": "390 claim (недействительная ссылка): ошибок в консоли нет",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "name": "390 contract: значок вкладки — тот же SVG, что на zaedem.by",
+   "ok": true,
+   "info": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'"
+  },
+  {
+   "name": "390 contract: apple-touch-icon указан",
+   "ok": true,
+   "info": "/apple-touch-icon.png"
+  },
+  {
+   "name": "390 contract: значок рисуется — фон #0F2D1D и лаймовая «З»",
+   "ok": true,
+   "info": "{\"bg\":[15,45,29],\"lime\":221}"
+  },
+  {
+   "name": "390 contract: файл /apple-touch-icon.png отдаётся (image/png) и совпадает с файлом сайта",
+   "ok": true,
+   "info": "{\"ok\":true,\"type\":\"image/png\",\"len\":2527,\"sha\":\"9eaea2855c496144af86ffa5325717db47909d303590fe6effaf02c06bac5723\"}"
+  },
+  {
+   "name": "390 contract: логотип в шапке «Заедем.by» (Unbounded, лайм + белое «.by»)",
+   "ok": true,
+   "info": "{\"text\":\"Заедем.by\",\"color\":\"rgb(201, 241, 53)\",\"font\":\"Unbounded, sans-serif\",\"emColor\":\"rgb(255, 255, 255)\",\"w\":354,\"h\":33.46875}"
+  },
+  {
+   "name": "390 contract: подпись платформы в подвале",
+   "ok": true,
+   "info": "Заедем.by · Белорусская платформа бронирования жилья"
+  },
+  {
+   "name": "390 contract: старых вариантов подписи нет (title, текст, мета, исходник)",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "name": "390 contract: по числу гостей из брони — 2 блока, первый предзаполнен из ФИО",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "name": "390 contract: отправка — POST с двумя гостями и согласием",
+   "ok": true,
+   "info": "{\"agree\":true,\"guests\":[{\"last\":\"Иванов\",\"first\":\"Иван\",\"middle\":\"Иванович\",\"birth\":\"\",\"citizenship\":\"BY\",\"citizenship_other\":\"\",\"doc_type\":\"passport_by\",\"doc_series\":\"\",\"doc_number\":\"\",\"doc_issued_by\":\"\",\"doc_issued_date\":\"\",\"personal_no\":\"\",\"reg_address\":\"\"},{\"last\":\"Петрова\",\"first\":\"Анна\",\"middle\":\"\",\"birth\":\"\",\"citizenship\":\"BY\",\"citizenship_other\":\"\",\"doc_type\":\"passport_by\",\"doc_series\":\"\",\"doc_number\":\"\",\"doc_issued_by\":\"\",\"doc_issued_date\":\"\",\"personal_no\":\"\",\"reg_address\":\"\"}]}"
+  },
+  {
+   "name": "390 contract: экран «Спасибо!»",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "name": "390 contract: нет горизонтальной прокрутки",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "name": "390 contract: ошибок в консоли нет",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "name": "390 cancel: значок вкладки — тот же SVG, что на zaedem.by",
+   "ok": true,
+   "info": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'"
+  },
+  {
+   "name": "390 cancel: apple-touch-icon указан",
+   "ok": true,
+   "info": "/apple-touch-icon.png"
+  },
+  {
+   "name": "390 cancel: значок рисуется — фон #0F2D1D и лаймовая «З»",
+   "ok": true,
+   "info": "{\"bg\":[15,45,29],\"lime\":221}"
+  },
+  {
+   "name": "390 cancel: файл /apple-touch-icon.png отдаётся (image/png) и совпадает с файлом сайта",
+   "ok": true,
+   "info": "{\"ok\":true,\"type\":\"image/png\",\"len\":2527,\"sha\":\"9eaea2855c496144af86ffa5325717db47909d303590fe6effaf02c06bac5723\"}"
+  },
+  {
+   "name": "390 cancel: логотип в шапке «Заедем.by» (Unbounded, лайм + белое «.by»)",
+   "ok": true,
+   "info": "{\"text\":\"Заедем.by\",\"color\":\"rgb(201, 241, 53)\",\"font\":\"Unbounded, sans-serif\",\"emColor\":\"rgb(255, 255, 255)\",\"w\":354,\"h\":33.46875}"
+  },
+  {
+   "name": "390 cancel: подпись платформы в подвале",
+   "ok": true,
+   "info": "Заедем.by · Белорусская платформа бронирования жилья"
+  },
+  {
+   "name": "390 cancel: старых вариантов подписи нет (title, текст, мета, исходник)",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "name": "390 cancel: показаны объект, номер брони и правила отмены",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "name": "390 cancel: подтверждение «Точно отменить бронь ZB-…?» показано",
+   "ok": true,
+   "info": "Точно отменить бронь ZB-260101? Действие необратимо."
+  },
+  {
+   "name": "390 cancel: в POST /api/bookings/cancel/ZB-260101 ушёл токен из ссылки",
+   "ok": true,
+   "info": "{\"token\":\"a1b2c3d4e5f60718293a4b5c6d7e8f90a1b2c3d4e5f60718\"}"
+  },
+  {
+   "name": "390 cancel: экран «Бронь отменена»",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "name": "390 cancel (отмена): нет горизонтальной прокрутки",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "name": "390 cancel (отмена): ошибок в консоли нет",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "name": "390 cancel: ссылка с #токеном открывает бронь",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "name": "390 cancel: отказ сервера — показан его текст, бронь не отменена, кнопка снова активна",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "name": "390 cancel: уже отменённая бронь — «Бронь уже отменена», кнопки отмены нет",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "name": "390 cancel: ссылка без токена — «Ссылка неполная», запросов к API нет",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "name": "390 cancel (без токена): нет горизонтальной прокрутки",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "name": "390 cancel (без токена): ошибок в консоли нет",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "name": "1366 claim: значок вкладки — тот же SVG, что на zaedem.by",
+   "ok": true,
+   "info": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'"
+  },
+  {
+   "name": "1366 claim: apple-touch-icon указан",
+   "ok": true,
+   "info": "/apple-touch-icon.png"
+  },
+  {
+   "name": "1366 claim: значок рисуется — фон #0F2D1D и лаймовая «З»",
+   "ok": true,
+   "info": "{\"bg\":[15,45,29],\"lime\":221}"
+  },
+  {
+   "name": "1366 claim: файл /apple-touch-icon.png отдаётся (image/png) и совпадает с файлом сайта",
+   "ok": true,
+   "info": "{\"ok\":true,\"type\":\"image/png\",\"len\":2527,\"sha\":\"9eaea2855c496144af86ffa5325717db47909d303590fe6effaf02c06bac5723\"}"
+  },
+  {
+   "name": "1366 claim: логотип в шапке «Заедем.by» (Unbounded, лайм + белое «.by»)",
+   "ok": true,
+   "info": "{\"text\":\"Заедем.by\",\"color\":\"rgb(201, 241, 53)\",\"font\":\"Unbounded, sans-serif\",\"emColor\":\"rgb(255, 255, 255)\",\"w\":1330,\"h\":33.46875}"
+  },
+  {
+   "name": "1366 claim: подпись платформы в подвале",
+   "ok": true,
+   "info": "Заедем.by · Белорусская платформа бронирования жилья"
+  },
+  {
+   "name": "1366 claim: старых вариантов подписи нет (title, текст, мета, исходник)",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "name": "1366 claim: форма загрузилась из ответа заглушки, город выбран",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "name": "1366 claim: без галочки согласия запрос не уходит",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "name": "1366 claim: отправка — POST с согласием, городом и паролем",
+   "ok": true,
+   "info": "{\"agree\":true,\"name_ru\":\"Усадьба «Тестовая»\",\"address\":\"д. Тестовая, 1\",\"city_id\":\"2\",\"lat\":null,\"lng\":null,\"description_ru\":\"Описание\",\"phone\":\"+375291112233\",\"email\":\"o@example.by\",\"contact_tg\":\"\",\"contact_wa\":\"\",\"contact_viber\":\"\",\"house_rules\":\"\",\"cancel_rules\":\"\",\"owner_email\":\"o@example.by\",\"owner_password\":\"12345678\"}"
+  },
+  {
+   "name": "1366 claim: экран «Готово!» с текстом сервера",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "name": "1366 claim: нет горизонтальной прокрутки",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "name": "1366 claim: ошибок в консоли нет",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "name": "1366 claim (недействительная ссылка): «Ссылка недействительна» и подвал на месте",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "name": "1366 claim (недействительная ссылка): нет горизонтальной прокрутки",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "name": "1366 claim (недействительная ссылка): ошибок в консоли нет",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "name": "1366 contract: значок вкладки — тот же SVG, что на zaedem.by",
+   "ok": true,
+   "info": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'"
+  },
+  {
+   "name": "1366 contract: apple-touch-icon указан",
+   "ok": true,
+   "info": "/apple-touch-icon.png"
+  },
+  {
+   "name": "1366 contract: значок рисуется — фон #0F2D1D и лаймовая «З»",
+   "ok": true,
+   "info": "{\"bg\":[15,45,29],\"lime\":221}"
+  },
+  {
+   "name": "1366 contract: файл /apple-touch-icon.png отдаётся (image/png) и совпадает с файлом сайта",
+   "ok": true,
+   "info": "{\"ok\":true,\"type\":\"image/png\",\"len\":2527,\"sha\":\"9eaea2855c496144af86ffa5325717db47909d303590fe6effaf02c06bac5723\"}"
+  },
+  {
+   "name": "1366 contract: логотип в шапке «Заедем.by» (Unbounded, лайм + белое «.by»)",
+   "ok": true,
+   "info": "{\"text\":\"Заедем.by\",\"color\":\"rgb(201, 241, 53)\",\"font\":\"Unbounded, sans-serif\",\"emColor\":\"rgb(255, 255, 255)\",\"w\":1330,\"h\":33.46875}"
+  },
+  {
+   "name": "1366 contract: подпись платформы в подвале",
+   "ok": true,
+   "info": "Заедем.by · Белорусская платформа бронирования жилья"
+  },
+  {
+   "name": "1366 contract: старых вариантов подписи нет (title, текст, мета, исходник)",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "name": "1366 contract: по числу гостей из брони — 2 блока, первый предзаполнен из ФИО",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "name": "1366 contract: отправка — POST с двумя гостями и согласием",
+   "ok": true,
+   "info": "{\"agree\":true,\"guests\":[{\"last\":\"Иванов\",\"first\":\"Иван\",\"middle\":\"Иванович\",\"birth\":\"\",\"citizenship\":\"BY\",\"citizenship_other\":\"\",\"doc_type\":\"passport_by\",\"doc_series\":\"\",\"doc_number\":\"\",\"doc_issued_by\":\"\",\"doc_issued_date\":\"\",\"personal_no\":\"\",\"reg_address\":\"\"},{\"last\":\"Петрова\",\"first\":\"Анна\",\"middle\":\"\",\"birth\":\"\",\"citizenship\":\"BY\",\"citizenship_other\":\"\",\"doc_type\":\"passport_by\",\"doc_series\":\"\",\"doc_number\":\"\",\"doc_issued_by\":\"\",\"doc_issued_date\":\"\",\"personal_no\":\"\",\"reg_address\":\"\"}]}"
+  },
+  {
+   "name": "1366 contract: экран «Спасибо!»",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "name": "1366 contract: нет горизонтальной прокрутки",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "name": "1366 contract: ошибок в консоли нет",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "name": "1366 cancel: значок вкладки — тот же SVG, что на zaedem.by",
+   "ok": true,
+   "info": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'"
+  },
+  {
+   "name": "1366 cancel: apple-touch-icon указан",
+   "ok": true,
+   "info": "/apple-touch-icon.png"
+  },
+  {
+   "name": "1366 cancel: значок рисуется — фон #0F2D1D и лаймовая «З»",
+   "ok": true,
+   "info": "{\"bg\":[15,45,29],\"lime\":221}"
+  },
+  {
+   "name": "1366 cancel: файл /apple-touch-icon.png отдаётся (image/png) и совпадает с файлом сайта",
+   "ok": true,
+   "info": "{\"ok\":true,\"type\":\"image/png\",\"len\":2527,\"sha\":\"9eaea2855c496144af86ffa5325717db47909d303590fe6effaf02c06bac5723\"}"
+  },
+  {
+   "name": "1366 cancel: логотип в шапке «Заедем.by» (Unbounded, лайм + белое «.by»)",
+   "ok": true,
+   "info": "{\"text\":\"Заедем.by\",\"color\":\"rgb(201, 241, 53)\",\"font\":\"Unbounded, sans-serif\",\"emColor\":\"rgb(255, 255, 255)\",\"w\":1330,\"h\":33.46875}"
+  },
+  {
+   "name": "1366 cancel: подпись платформы в подвале",
+   "ok": true,
+   "info": "Заедем.by · Белорусская платформа бронирования жилья"
+  },
+  {
+   "name": "1366 cancel: старых вариантов подписи нет (title, текст, мета, исходник)",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "name": "1366 cancel: показаны объект, номер брони и правила отмены",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "name": "1366 cancel: подтверждение «Точно отменить бронь ZB-…?» показано",
+   "ok": true,
+   "info": "Точно отменить бронь ZB-260101? Действие необратимо."
+  },
+  {
+   "name": "1366 cancel: в POST /api/bookings/cancel/ZB-260101 ушёл токен из ссылки",
+   "ok": true,
+   "info": "{\"token\":\"a1b2c3d4e5f60718293a4b5c6d7e8f90a1b2c3d4e5f60718\"}"
+  },
+  {
+   "name": "1366 cancel: экран «Бронь отменена»",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "name": "1366 cancel (отмена): нет горизонтальной прокрутки",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "name": "1366 cancel (отмена): ошибок в консоли нет",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "name": "1366 cancel: ссылка с #токеном открывает бронь",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "name": "1366 cancel: отказ сервера — показан его текст, бронь не отменена, кнопка снова активна",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "name": "1366 cancel: уже отменённая бронь — «Бронь уже отменена», кнопки отмены нет",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "name": "1366 cancel: ссылка без токена — «Ссылка неполная», запросов к API нет",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "name": "1366 cancel (без токена): нет горизонтальной прокрутки",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "name": "1366 cancel (без токена): ошибок в консоли нет",
+   "ok": true,
+   "info": ""
+  }
+ ]
+}
