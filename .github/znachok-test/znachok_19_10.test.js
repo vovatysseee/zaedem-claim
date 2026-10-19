@@ -30,10 +30,10 @@ const SHOTS = path.join(__dirname, 'shots_19_10');
 fs.mkdirSync(SHOTS, { recursive: true });
 
 // Эталон: разметка значка из zaedem-frontend (oferta.html, PR frontend #1 от 11.10) — копия строки как есть.
-const ICON_HREF = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230F2D1D'/%3E%3Cpath d='M32.18 44.4Q27.8 44.4 25.14 42.65Q22.47 40.89 21.19 37.2L26.09 35.47Q27.8 40.17 32.18 40.17Q34.58 40.17 35.82 39.17Q37.06 38.18 37.06 36.38Q37.06 34.51 35.59 33.68Q34.11 32.85 30.97 32.85H29.88V28.64H30.97Q33.78 28.64 35.11 27.75Q36.45 26.86 36.45 25Q36.45 23.31 35.31 22.42Q34.17 21.53 32.16 21.53Q28.23 21.53 26.82 26.11L21.84 24.98Q23.12 21.18 25.69 19.34Q28.26 17.5 32.25 17.5Q36.54 17.5 39.14 19.35Q41.74 21.19 41.74 24.31Q41.74 26.71 40.42 28.3Q39.11 29.9 36.54 30.55Q39.35 30.96 40.88 32.56Q42.41 34.15 42.41 36.6Q42.41 40.17 39.64 42.28Q36.88 44.4 32.18 44.4Z' fill='%23c9f135'/%3E%3C/svg%3E";
+const ICON_HREF = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230F2D1D'/%3E%3Ctext x='32' y='44' font-family='Arial,sans-serif' font-size='38' font-weight='900' fill='%23c9f135' text-anchor='middle'%3E3%3C/text%3E%3C/svg%3E";
 const APPLE_HREF = '/apple-touch-icon.png';
 // sha256 файла apple-touch-icon.png из zaedem-frontend (main на 19.10)
-const APPLE_SHA = '96b875dd92a0bc65cebe59afe44d65ba22851d6fec11cf0bfaa559dfe646aec6';
+const APPLE_SHA = '9eaea2855c496144af86ffa5325717db47909d303590fe6effaf02c06bac5723';
 const FOOT = 'Заедем.by · Белорусская платформа бронирования жилья';
 
 const TOKEN = 'a1b2c3d4e5f60718293a4b5c6d7e8f90a1b2c3d4e5f60718';
